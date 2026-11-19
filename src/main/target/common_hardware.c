@@ -125,6 +125,20 @@
     #endif
 #endif
 
+#if defined(USE_BARO_BMP5XX)
+    // I2C-only driver (covers BMP580 + BMP581). SDO=GND => 0x46 (default),
+    // SDO=VDD => 0x47. The board can override BMP5XX_I2C_ADDR / BMP5XX_I2C_BUS.
+    #if defined(BMP5XX_I2C_BUS) || defined(BARO_I2C_BUS)
+    #if !defined(BMP5XX_I2C_BUS)
+        #define BMP5XX_I2C_BUS BARO_I2C_BUS
+    #endif
+    #if !defined(BMP5XX_I2C_ADDR)
+        #define BMP5XX_I2C_ADDR (0x46)
+    #endif
+    BUSDEV_REGISTER_I2C(busdev_bmp5xx,      DEVHW_BMP5XX,       BMP5XX_I2C_BUS,     BMP5XX_I2C_ADDR,    NONE,           DEVFLAGS_NONE,      0);
+    #endif
+#endif
+
 #if defined(USE_BARO_SPL06)
     #if defined(SPL06_SPI_BUS)
       BUSDEV_REGISTER_SPI(busdev_spl06,     DEVHW_SPL06,        SPL06_SPI_BUS,      SPL06_CS_PIN,       NONE,           DEVFLAGS_NONE,      0);

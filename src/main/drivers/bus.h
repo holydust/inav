@@ -98,6 +98,7 @@ typedef enum {
     DEVHW_BMP388,
     DEVHW_DPS310,
     DEVHW_B2SMPB,
+    DEVHW_BMP5XX,       // BMP580 / BMP581 (Bosch BMP5 family)
 
     /* Compass chips */
     DEVHW_HMC5883,

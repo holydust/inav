@@ -117,6 +117,7 @@ extern uint8_t __config_end;
 #define USE_BARO_BMP280
 #define USE_BARO_BMP388
 #define USE_BARO_BMP390
+#define USE_BARO_BMP5XX
 #define USE_BARO_DPS310
 #define USE_BARO_LPS25H
 #define USE_BARO_MS5607
